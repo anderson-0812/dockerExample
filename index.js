@@ -8,10 +8,12 @@ const Animal = mongoose.model('Animal', new mongoose.Schema({
 
 const app = express()
 
-mongoose.connect('mongodb://nico:password@monguito:27017/miapp?authSource=admin')
+// mongoose.connect('mongodb://nico:password@localhost:27017/miapp?authSource=admin') // correr desde maquina anfitriona a contenedor docker
+mongoose.connect('mongodb://nico:password@monguito:27017/miapp?authSource=admin') // correr desde un docker que este almacenado este proyecto a otro docker se cambia el localhosto por "monguito"
+                                                                                    //  es el nombre del docker de la base"
 
 app.get('/', async (_req, res) => {
-  console.log('listando... chanchitos...')
+  console.log('listando... chanchitos x2...')
   const animales = await Animal.find();
   return res.send(animales)
 })

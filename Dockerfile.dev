@@ -1,10 +1,15 @@
 FROM node:18
+# detector de cambios nodemon
+RUN npm i -g nodemon 
 
-RUN npm i -g nodemon
+# ruta donde estara en el contenedor
 RUN mkdir -p /home/app
 
+# indicamos que la ruta en la q vamos a trabajar 
 WORKDIR /home/app
 
+#  EXPOPNEMOS EL PUERTO
 EXPOSE 3000
 
+# comandod e ejecutar y levanatr el proyecto
 CMD ["nodemon", "index.js"]

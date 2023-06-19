@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   chanchito:
+    # aqui definimos la ruta en context y el archivo a ejecutar en docker-file
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -8,7 +9,9 @@ services:
       - "3000:3000"
     links:
       - monguito
+    # marcamos que este contenedor va a usar un volumen este sera un tipo anonimo  
     volumes:
+      # asi se define una ruta de un volumen anonimo el . => es la ruta actual q tieneq s ermontada en el volumen y despues de los : la ruta de destino en el contenedor  
       - .:/home/app
   monguito:
     image: mongo
